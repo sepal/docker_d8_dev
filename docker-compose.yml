@@ -1,0 +1,15 @@
+web:
+  build: .
+  ports:
+    - "8080:80"
+  volumes:
+    - ./src:/var/www/html/drupal
+  links:
+    - db
+db:
+  image: mysql
+  environment:
+    MYSQL_DATABASE: drupal
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: 
+    MYSQL_ROOT_PASSWORD:
