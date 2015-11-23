@@ -2,8 +2,9 @@ web:
   build: .
   ports:
     - "8080:80"
+    - "50022:22"
   volumes:
-    - ./src:/var/www/html/drupal
+    - ./src:/var/www/drupal
   links:
     - db
 db:
