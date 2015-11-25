@@ -251,9 +251,6 @@ $databases['default']['default'] = array(
  *   );
  * @endcode
  */
-$config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '../files/sync'
-);
 
 /**
  * Settings:
@@ -294,7 +291,7 @@ $config_directories = array(
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = file_get_contents('/tmp/salt.txt');
 
 /**
  * Deployment identifier.
@@ -508,7 +505,7 @@ if ($settings['hash_salt']) {
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-$settings['file_public_path'] = '../files';
+# $settings['file_public_path'] = 'sites/default/files';
 
 /**
  * Private file path:
@@ -523,7 +520,7 @@ $settings['file_public_path'] = '../files';
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-$settings['file_private_path'] = '../private';
+ # $settings['file_private_path'] = '';
 
 /**
  * Session write interval:
