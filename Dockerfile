@@ -24,11 +24,13 @@ RUN rm -Rf /etc/nginx/conf.d/* && \
 COPY ./config/nginx-drupal.conf /etc/nginx/sites-available/drupal.conf
 RUN ln -s /etc/nginx/sites-available/drupal.conf \
   /etc/nginx/sites-enabled/drupal.conf
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Configure php for drupal development environment.
 COPY ./config/php.ini /etc/php5/fpm/php.ini
 COPY ./config/xdebug.ini /etc/php5/mods-available/xdebug.ini
 RUN echo "clear_env = no" >> /etc/php5/fpm/pool.d/www.conf
+ADD ./config/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 
 # Copy several configs.
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
