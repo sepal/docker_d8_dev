@@ -13,7 +13,7 @@ RUN export LANG=C.UTF-8 && add-apt-repository -y ppa:ondrej/php5-5.6 && apt-get 
 RUN apt-get install -y php5-fpm php5-cli php5-mysql php-apc php5-curl php5-gd \
   php5-intl php5-mcrypt php5-memcache php5-sqlite php5-tidy php5-xmlrpc \
   php5-xsl php5-pgsql php5-mongo php5-xdebug \
-  nginx openssh-server supervisor vim less pwgen
+  nginx mysql-client openssh-server supervisor vim less pwgen 
 
 # Clean up.
 RUN rm -r /var/lib/apt/lists/*
