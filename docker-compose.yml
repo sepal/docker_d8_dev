@@ -3,12 +3,6 @@ web:
   ports:
     - "8080:80"
     - "50022:22"
-  volumes:
-    - ./src/core:/var/www/core
-    - ./src/modules:/var/www/modules
-    - ./src/profiles:/var/www/profiles
-    - ./src/themes:/var/www/themes
-    - ./src/themes:/var/www/vendor
   links:
     - db
 db:
@@ -16,5 +10,5 @@ db:
   environment:
     MYSQL_DATABASE: drupal
     MYSQL_USER: drupal
-    MYSQL_PASSWORD:
-    MYSQL_ROOT_PASSWORD:
+    MYSQL_PASSWORD: drupal
+    MYSQL_ROOT_PASSWORD: drupi

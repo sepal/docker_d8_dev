@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y ca-certificates curl librecode0 \
   libsqlite3-0 libxml2 --no-install-recommends python-software-properties \
-  software-properties-common
+  software-properties-common git
 
 # Add custom ppa repository to get php5.6, we need to set the language
 # correctly for that, otherwise add-apt-repository will throw an error.
@@ -51,5 +51,11 @@ RUN php5enmod mbstring opcache
 
 # Set the correct owner for the files directory.
 RUN chown -R www-data:www-data /var/www/
+
+# Install some additional tools like composer, drush and drupal console.
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer global require drupal/console:@stable && composer global require drush/drush:dev-master
+RUN echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bash_profile &&
+  echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bashrc
 
 CMD ["/usr/bin/supervisord"]
