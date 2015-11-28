@@ -32,6 +32,7 @@ RUN echo "clear_env = no" >> /etc/php5/fpm/pool.d/www.conf
 
 # Copy several configs.
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
 
 # Created the directory containing the drupal source and the one containing
 # files.
