@@ -55,7 +55,6 @@ RUN chown -R www-data:www-data /var/www/
 # Install some additional tools like composer, drush and drupal console.
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer global require drupal/console:@stable && composer global require drush/drush:dev-master
-RUN echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bash_profile &&
-  echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bashrc
+RUN echo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bashrc
 
 CMD ["/usr/bin/supervisord"]

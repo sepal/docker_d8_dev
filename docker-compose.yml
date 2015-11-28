@@ -3,6 +3,12 @@ web:
   ports:
     - "8080:80"
     - "50022:22"
+  volumes:
+    - ./src/core:/var/www/core
+    - ./src/modules:/var/www/modules
+    - ./src/profiles:/var/www/profiles
+    - ./src/themes:/var/www/themes
+    - ./src/vendor:/var/www/vendor
   links:
     - db
 db:
